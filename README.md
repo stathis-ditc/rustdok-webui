@@ -2,6 +2,39 @@
 
 This is the web interface for RustDok, a document storage and management system built with Rust.
 
+![Screenshot 2025-03-16 at 21 11 48](https://github.com/user-attachments/assets/6607253e-8c21-4bb8-8d3d-5713f73d00d9)
+
+
+## Disclaimer
+
+**NO WARRANTY**: RustDok is provided "as is" without warranty of any kind, express or implied. The authors and contributors make no representations or warranties of any kind concerning the software, express or implied, including, without limitation, warranties of merchantability, fitness for a particular purpose, or non-infringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+Use at your own risk.
+
+## Overview
+
+RustDok WebUI is the frontend component of the RustDok project, providing a user-friendly interface for interacting with the RustDok server. It allows users to manage buckets and objects in an S3-compatible storage backend through a web browser.
+
+## Features
+
+- **Bucket Management**: Create, list, and delete buckets
+- **Object Operations**: Upload, download, view, list, and delete objects
+- **Folder Navigation**: Browse through folder-like structures
+- **Objects Preview**: Built-in viewer for PDF,Images etc. (includes support for more file types but it has not been tested yet)
+- **Responsive Design**: Works on desktop and mobile devices
+- **Modern UI**: Built with Material UI and Tailwind CSS
+  
+![Screenshot 2025-03-16 at 21 19 30](https://github.com/user-attachments/assets/ed9601e6-2f20-4c1e-a914-657055b3dc89)
+
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **UI Libraries**: Material UI 6, Tailwind CSS 4
+- **State Management**: React Hooks
+- **HTTP Client**: Axios
+- **PDF Handling**: react-pdf, pdfjs-dist
+- **Language**: JavaScript/TypeScript
+
 ## Architecture
 
 The RustDok application consists of two main components:
@@ -46,12 +79,6 @@ Key WebUI configuration options in the Helm chart:
 - Add custom environment variables
 
 For more information, see the [rustdok-helm-chart](https://github.com/stathis-ditc/rustdok-helm-chart).
-
-### How It Works
-
-1. The WebUI server communicates with the RustDok server using Kubernetes internal DNS.
-2. The browser communicates only with the WebUI server through the API proxy.
-3. This approach solves the problem of Kubernetes internal DNS names not being resolvable from the browser.
 
 ## Environment Variables
 
@@ -113,73 +140,11 @@ If you're experiencing issues connecting to the API:
 2. Verify that the RustDok server is running and accessible.
 3. If using port forwarding, ensure you're accessing the application through the WebUI service.
 
-### Kubernetes Internal DNS
-
-The application automatically detects Kubernetes internal DNS names and routes requests through the server-side proxy. This ensures that API requests work correctly even when accessing the application through port forwarding.
-
-## Disclaimer
-
-**NO WARRANTY**: RustDok is provided "as is" without warranty of any kind, express or implied. The authors and contributors make no representations or warranties of any kind concerning the software, express or implied, including, without limitation, warranties of merchantability, fitness for a particular purpose, or non-infringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
-
-Use at your own risk.
-
-## Overview
-
-RustDok WebUI is the frontend component of the RustDok project, providing a user-friendly interface for interacting with the RustDok server. It allows users to manage buckets and objects in an S3-compatible storage backend through a web browser.
-
-## Features
-
-- **Bucket Management**: Create, list, and delete buckets
-- **Object Operations**: Upload, download, view, list, and delete objects
-- **Folder Navigation**: Browse through folder-like structures
-- **Objects Preview**: Built-in viewer for PDF,Images etc. (includes support for more file types but it has not been tested yet)
-- **Responsive Design**: Works on desktop and mobile devices
-- **Modern UI**: Built with Material UI and Tailwind CSS
-
-## Tech Stack
-
-- **Framework**: Next.js 15
-- **UI Libraries**: Material UI 6, Tailwind CSS 4
-- **State Management**: React Hooks
-- **HTTP Client**: Axios
-- **PDF Handling**: react-pdf, pdfjs-dist
-- **Language**: JavaScript/TypeScript
-
 ## Prerequisites
 
 - Node.js (v18 or later recommended)
 - npm or yarn
 - [RustDok server](https://github.com/stathis-ditc/rustdok-server) running
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/stathis-ditc/rustdok-webui.git
-   cd rustdok-webui
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Create a `.env.local` file with the following variables:
-   ```
-   RUSTDOK_API_URL=http://rustdok-server-url:8080 
-   RUSTDOK_API_VERSION=v1 // v1 is the only option for the moment. 
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Building for Production
 
@@ -231,3 +196,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Related Projects
 
 - [RustDok Server](https://github.com/stathis-ditc/rustdok-server/blob/main/README.md): The backend server component of RustDok
+- [Rustdok Helm Chart](https://github.com/stathis-ditc/rustdok-helm-chart/blob/main/README.md)
