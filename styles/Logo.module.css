@@ -1,0 +1,104 @@
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logoContainer:hover {
+  transform: scale(1.05);
+}
+
+.logoContainer:hover .rustCrate {
+  filter: drop-shadow(0 0 3px rgba(211, 84, 0, 0.6));
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoSvg {
+  display: block;
+}
+
+/* Logo sizes */
+.logoSmall {
+  height: 40px;
+}
+
+.logoSmall .logoSvg {
+  width: 40px;
+  height: 40px;
+}
+
+.logoSmall .logoText {
+  font-size: 1rem;
+}
+
+.logoMedium {
+  height: 50px;
+}
+
+.logoMedium .logoSvg {
+  width: 50px;
+  height: 50px;
+}
+
+.logoMedium .logoText {
+  font-size: 1.25rem;
+}
+
+.logoLarge {
+  height: 60px;
+}
+
+.logoLarge .logoSvg {
+  width: 60px;
+  height: 60px;
+}
+
+.logoLarge .logoText {
+  font-size: 1.5rem;
+}
+
+.logoXLarge {
+  height: 120px;
+}
+
+.logoXLarge .logoSvg {
+  width: 120px;
+  height: 120px;
+}
+
+.logoXLarge .logoText {
+  font-size: 2.5rem;
+}
+
+/* Logo text styling */
+.logoText {
+  display: flex;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.rustText {
+  color: #D35400;
+}
+
+.dokText {
+  color: #2C3E50;
+}
+
+/* Animation for the rust crate */
+.rustCrate {
+  transition: filter 0.3s ease;
+}
+
+/* Media query for dark mode */
+@media (prefers-color-scheme: dark) {
+  .dokText {
+    color: #ECF0F1;
+  }
+} 

@@ -1,0 +1,175 @@
+.uploadContainer {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dropzone {
+  position: relative;
+  border: 2px dashed var(--primary);
+  border-radius: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dropzone:hover {
+  border-color: var(--primary-dark);
+  background-color: rgba(249, 115, 22, 0.02);
+  transform: translateY(-2px);
+}
+
+.objectInput {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.uploadIcon {
+  width: 56px;
+  height: 56px;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.dropzone:hover .uploadIcon {
+  transform: translateY(-5px);
+}
+
+.selectedObjects {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.objectList {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  background-color: #f9fafb;
+}
+
+.objectItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.objectItem:last-child {
+  border-bottom: none;
+}
+
+.objectName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0.5rem;
+  color: #2E2459;
+}
+
+.objectSize {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-left: auto;
+}
+
+.uploadButton {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.uploadButton:hover:not(:disabled) {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.uploadButton:disabled {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #DEA584;
+  transition: width 0.3s ease;
+}
+
+.progressError {
+  background-color: #ef4444;
+}
+
+.error {
+  margin-top: 1rem;
+  color: var(--error);
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.errorIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--error);
+  flex-shrink: 0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancelButton:hover {
+  background-color: #e5e7eb;
+} 

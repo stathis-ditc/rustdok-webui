@@ -1,0 +1,100 @@
+.navigation {
+  background-color: var(--secondary);
+  padding: 0.75rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.logoLink:hover {
+  transform: scale(1.02);
+  color: white;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.75rem;
+  color: var(--primary);
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLink, .activeLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: var(--secondary-light);
+  color: white;
+}
+
+.activeLink {
+  background-color: var(--primary);
+  color: white;
+}
+
+.navIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.userActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.userButton, .settingsButton {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.userButton:hover, .settingsButton:hover {
+  background-color: var(--secondary-light);
+  transform: translateY(-1px);
+}
+
+.userIcon, .settingsIcon {
+  width: 20px;
+  height: 20px;
+} 

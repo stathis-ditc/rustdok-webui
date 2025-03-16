@@ -1,0 +1,128 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #343a40;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6c757d;
+  padding: 0;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: #343a40;
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+.modalBody p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #495057;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.optionButton {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.optionButton:hover {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+}
+
+.optionIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.skipButton .optionIcon {
+  color: #6c757d;
+}
+
+.renameButton .optionIcon {
+  color: #0d6efd;
+}
+
+.replaceButton .optionIcon {
+  color: #dc3545;
+}
+
+.skipButton:hover {
+  border-color: #6c757d;
+}
+
+.renameButton:hover {
+  border-color: #0d6efd;
+}
+
+.replaceButton:hover {
+  border-color: #dc3545;
+}
+
+.optionDescription {
+  display: block;
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-top: 4px;
+  margin-left: 36px;
+} 

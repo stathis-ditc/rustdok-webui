@@ -1,0 +1,151 @@
+.progressContainer {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 350px;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  z-index: 50;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--secondary);
+  color: white;
+}
+
+.progressSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progressActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progressSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorIcon, .successIcon {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.toggleIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.progressDetails {
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.uploadItem {
+  padding: 0.75rem;
+  background-color: var(--background-alt);
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--primary);
+}
+
+.uploadItem.completed {
+  border-left-color: var(--success);
+}
+
+.uploadItem.error {
+  border-left-color: var(--error);
+}
+
+.uploadInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.uploadFilename {
+  font-weight: 500;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.uploadStatus {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.uploadProgressBar {
+  height: 4px;
+  background-color: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.uploadProgressFill {
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clearButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.expanded {
+  max-height: 400px;
+} 

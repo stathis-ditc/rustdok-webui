@@ -1,0 +1,1182 @@
+.fileListContainer {
+  width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+  min-height: 200px;
+  margin-bottom: 2rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--background-card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.fileListContainer.dragging {
+  outline: 2px dashed var(--primary);
+  outline-offset: -2px;
+  background-color: rgba(222, 165, 132, 0.05);
+  transition: all 0.2s ease;
+}
+
+.fileListControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--background-card);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.viewButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background-color: var(--background-alt);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.viewButton.active {
+  color: var(--primary);
+  background-color: rgba(222, 165, 132, 0.1);
+}
+
+.viewIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Table view styles */
+.fileList {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.fileListHeader {
+  background-color: var(--background-alt);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.fileListHeaderItem {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.fileListHeaderItem:hover {
+  color: var(--primary);
+}
+
+.sortIndicator {
+  display: inline-block;
+  margin-left: 0.25rem;
+  color: var(--primary);
+}
+
+.fileListRow {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fileListRow:hover {
+  background-color: #f9fafb;
+}
+
+.fileListRow.folder {
+  cursor: pointer;
+}
+
+.fileListRow td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.fileListRow:last-child td {
+  border-bottom: none;
+}
+
+.fileListRow td:first-child {
+  padding-left: 1rem;
+  width: 40px;
+}
+
+.fileListName {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileListName:hover {
+  color: var(--primary);
+}
+
+.fileListName svg {
+  color: var(--primary);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.fileListType, .fileListSize {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.fileListActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.actionButton:hover {
+  background-color: var(--bg-hover);
+}
+
+.actionButton.preview {
+  color: var(--info);
+}
+
+.actionButton.preview:hover {
+  background-color: rgba(var(--info-rgb), 0.1);
+}
+
+.actionButton.download {
+  color: var(--success);
+}
+
+.actionButton.download:hover {
+  background-color: rgba(56, 142, 60, 0.1);
+}
+
+.actionButton.delete {
+  color: var(--error);
+}
+
+.actionButton.delete:hover {
+  background-color: rgba(211, 47, 47, 0.1);
+}
+
+.actionIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Grid view styles */
+.fileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.fileCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background-color: var(--background-card);
+  border: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fileCard.selected {
+  background-color: rgba(74, 111, 165, 0.1);
+  box-shadow: 0 0 0 2px var(--primary, #4a6fa5);
+}
+
+.fileCardCheckbox {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+/* Make sure the file icon container doesn't overlap with the checkbox */
+.fileIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+  padding-top: 10px; /* Add padding to avoid overlap with checkbox */
+}
+
+.fileIconContainer:hover {
+  background-color: rgba(222, 165, 132, 0.1);
+}
+
+.fileIconDefault,
+.fileIconPdf,
+.fileIconImage,
+.fileIconDoc {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s ease;
+}
+
+.fileIconPdf {
+  color: var(--error);
+}
+
+.fileIconImage {
+  color: var(--primary);
+}
+
+.fileIconDoc {
+  color: var(--secondary);
+}
+
+.fileIconDefault {
+  color: var(--text-secondary);
+}
+
+.fileInfo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.fileName {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.fileName:hover {
+  color: var(--primary);
+}
+
+.fileSize {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0;
+}
+
+.fileDate {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0;
+}
+
+.fileActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 1rem;
+  margin-top: auto;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  text-align: center;
+  background-color: var(--background-card);
+  border-radius: var(--radius);
+  margin: 2rem 0;
+}
+
+.emptyIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Checkbox styling */
+.checkboxContainer {
+  display: inline-block;
+  position: relative;
+  padding-left: 0;
+  cursor: pointer;
+  user-select: none;
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--background-card);
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+.checkbox:hover {
+  border-color: var(--primary);
+}
+
+.checkbox:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.fileListRow.selected {
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+/* Delete confirmation dialog */
+.deleteConfirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.deleteConfirmDialog {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 450px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.deleteConfirmHeader {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--secondary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deleteConfirmTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.deleteConfirmIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.closeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.deleteConfirmBody {
+  padding: 1.5rem;
+}
+
+.confirmationText {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.warningText {
+  color: var(--error);
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 0.375rem;
+  border-left: 3px solid var(--error);
+}
+
+.deleteConfirmFooter {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--background-alt);
+}
+
+.cancelButton {
+  background-color: var(--background);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  margin-right: 0.75rem;
+}
+
+.cancelButton:hover {
+  background-color: var(--hover);
+  border-color: var(--text-secondary);
+}
+
+.deleteButton {
+  background-color: var(--error);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.deleteButton:hover {
+  background-color: #dc2626;
+}
+
+/* Keep the old styles for backward compatibility */
+.deleteConfirmButtons {
+  display: none;
+}
+
+.cancelDeleteButton, .confirmDeleteButton {
+  display: none;
+}
+
+.folderCreationWrapper {
+  margin-left: 1rem;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 1rem;
+}
+
+.sortIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.dropOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  border-radius: 0.5rem;
+  pointer-events: none;
+}
+
+.fileListContainer.dragging .dropOverlay {
+  pointer-events: auto;
+}
+
+.dropMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #2E2459;
+  text-align: center;
+  padding: 2rem;
+}
+
+.dropIcon {
+  width: 64px;
+  height: 64px;
+  color: #DEA584;
+}
+
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.uploadButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.uploadButton:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.uploadIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.uploadPopupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.uploadPopup {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  padding: 2rem;
+  animation: slideUp 0.3s ease;
+}
+
+.uploadPopup.dragging {
+  outline: 2px dashed var(--primary);
+  background-color: rgba(222, 165, 132, 0.05);
+}
+
+.closePopupButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.closePopupButton:hover {
+  background-color: var(--background-alt);
+  color: var(--error);
+}
+
+.uploadPopupContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.uploadPopupContent h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.uploadPopupContent .uploadIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.uploadPopupText {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.selectFilesButton {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectFilesButton:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fileListCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.checkboxLabel {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: var(--background-card);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkbox:checked + .checkboxLabel {
+  background-color: #DEA584;
+  border-color: #DEA584;
+}
+
+.checkbox:checked + .checkboxLabel:after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.fileListItem.selected {
+  background-color: rgba(222, 165, 132, 0.1);
+}
+
+.fileGridItem.selected {
+  background-color: rgba(222, 165, 132, 0.1);
+}
+
+.fileGridCheckbox {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 5;
+}
+
+.bulkActionWrapper {
+  margin-left: 1rem;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 1rem;
+}
+
+.bulkDeleteButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-right: 16px;
+}
+
+.bulkDeleteButton:hover {
+  background-color: #d32f2f;
+}
+
+.bulkDeleteIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.folderNameInputContainer {
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem 0;
+}
+
+.folderNameInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background-card);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.folderNameInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(222, 165, 132, 0.2);
+}
+
+.folderNameInput::placeholder {
+  color: var(--text-tertiary);
+}
+
+.uploadSuccessMessage {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fileCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fileCard.folder {
+  cursor: pointer;
+}
+
+/* Upload Progress Panel */
+.uploadProgressPanel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.uploadProgressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.uploadProgressHeader h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.closeProgressButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.closeProgressButton:hover {
+  background-color: #e5e7eb;
+}
+
+.closeProgressButton svg {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+}
+
+.uploadProgressList {
+  overflow-y: auto;
+  max-height: 320px;
+  padding: 8px 0;
+}
+
+.uploadProgressItem {
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.uploadProgressItem:last-child {
+  border-bottom: none;
+}
+
+.uploadProgressInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uploadFileName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+
+.uploadFileSize {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.uploadProgressBarContainer {
+  height: 6px;
+  background-color: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.uploadProgressBar {
+  height: 100%;
+  background-color: #DEA584;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.uploadProgressError {
+  background-color: #ef4444;
+}
+
+.uploadProgressStatus {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.uploadCompleteIcon {
+  width: 16px;
+  height: 16px;
+  color: #10b981;
+}
+
+.uploadErrorIcon {
+  width: 16px;
+  height: 16px;
+  color: #ef4444;
+}
+
+/* File Conflict Dialog */
+.conflictOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.conflictDialog {
+  width: 450px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+.conflictHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.conflictHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.closeConflictButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.closeConflictButton:hover {
+  background-color: #e5e7eb;
+}
+
+.closeConflictButton svg {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+.conflictContent {
+  padding: 20px;
+}
+
+.conflictFileInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.conflictWarningIcon {
+  width: 24px;
+  height: 24px;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.conflictFileInfo p {
+  margin: 0;
+  font-size: 15px;
+  color: #374151;
+}
+
+.conflictMessage {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.conflictActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 20px 20px;
+}
+
+.conflictButton {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.conflictButton:hover {
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+}
+
+.conflictRename {
+  background-color: #DEA584;
+  border-color: #DEA584;
+  color: white;
+}
+
+.conflictRename:hover {
+  background-color: #d69876;
+  border-color: #d69876;
+}
+
+.conflictOverwrite {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+.conflictOverwrite:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.conflictProgress {
+  padding: 10px 20px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.fileListRow.dragOver,
+.fileCard.dragOver {
+  background-color: rgba(222, 165, 132, 0.15);
+  outline: 2px dashed var(--primary);
+  outline-offset: -2px;
+  transition: all 0.2s ease;
+}
+
+.fileListRow.dragging,
+.fileCard.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
+
+.fileCard.folder {
+  background-color: rgba(222, 165, 132, 0.05);
+}
+
+.fileCard.folder.dragOver {
+  background-color: rgba(222, 165, 132, 0.2);
+  box-shadow: 0 0 0 2px var(--primary);
+} 
