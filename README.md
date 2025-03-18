@@ -69,12 +69,6 @@ docker build -t your-registry/rustdok-webui:latest ./webui
 docker push your-registry/rustdok-webui:latest
 ```
 
-### Deploying with Helm
-
-```bash
-helm upgrade rustdok ./k8s/rustdok -f ./k8s/rustdok/my-values.yaml
-```
-
 ### Accessing the Application
 
 #### Port Forwarding
