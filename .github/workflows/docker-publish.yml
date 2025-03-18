@@ -51,7 +51,7 @@ jobs:
             type=ref,event=pr
             type=sha,format=short
             type=raw,value=latest,enable={{is_default_branch}}
-          annotations: |
+          labels: |
             org.opencontainers.image.title="RustDok WebUI"
             org.opencontainers.image.description="Frontend web interface for RustDok document management system"
             org.opencontainers.image.vendor="Devs In The Cloud"
